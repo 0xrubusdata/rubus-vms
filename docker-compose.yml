@@ -1,0 +1,62 @@
+services:
+  # 🌍 Base locale pour stocker les métadonnées vectorielles
+  vms_postgres:
+    image: postgres:15
+    container_name: vms_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${VMS_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${VMS_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${VMS_POSTGRES_DB}
+    ports:
+      - "5433:5432"  # ⚠️ Change le port externe si besoin
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - vms_network
+
+  # 🚀 API FastAPI pour interroger la mémoire vectorielle
+  vms_api:
+    build: .
+    container_name: vms_api
+    restart: always
+    depends_on:
+      - vms_postgres
+    environment:
+      VMS_POSTGRES_URL: postgres://${VMS_POSTGRES_USER}:${VMS_POSTGRES_PASSWORD}@vms_postgres:${VMS_POSTGRES_PORT}/${VMS_POSTGRES_DB}
+      RUBUS_POSTGRES_URL: postgres://${RUBUS_POSTGRES_USER}:${RUBUS_POSTGRES_PASSWORD}@${RUBUS_POSTGRES_HOST}:${RUBUS_POSTGRES_PORT}/${RUBUS_POSTGRES_DB}
+    ports:
+      - "8001:8001"  # ⚠️ Change le port si nécessaire
+    volumes:
+      - .:/app
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
+    networks:
+      - vms_network
+
+  adminer:
+    image: adminer
+    container_name: vms_adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: vms_postgres
+    ports:
+      - "8081:8080"    
+
+  # 🟢 Optionnel : ChromaDB pour la base vectorielle
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    container_name: vms_chromadb
+    restart: always
+    ports:
+      - "8002:8000"
+    volumes:
+      - chroma_data:/chroma/index
+    networks:
+      - vms_network
+
+volumes:
+  pgdata:
+  chroma_data:
+
+networks:
+  vms_network:

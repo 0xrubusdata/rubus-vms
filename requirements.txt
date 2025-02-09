@@ -1,0 +1,19 @@
+# 🚀 FastAPI + Serveur ASGI
+fastapi==0.95.2
+uvicorn==0.22.0
+requests==2.31.0
+
+# 🏛️ PostgreSQL (ORM + Driver)
+sqlalchemy==2.0.25   # ORM pour gérer PostgreSQL
+asyncpg==0.29.0      # Driver async pour PostgreSQL
+
+# 🧠 NLP & Vectorisation
+sentence-transformers==2.2.2  # Encodage des textes en vecteurs
+numpy==1.24.3                 # Calculs matriciels pour FAISS
+
+# 🔍 Base vectorielle (FAISS & ChromaDB)
+faiss-cpu==1.7.4         # Librairie de recherche vectorielle (si FAISS est utilisé)
+chromadb==0.4.9          # Base vectorielle alternative (si ChromaDB est utilisé)
+
+# 🔧 Outils complémentaires
+python-dotenv==1.0.0   # Chargement des variables d’environnement (.env)
