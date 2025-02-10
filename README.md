@@ -89,3 +89,20 @@ The **Vector Memory Service** project is a **central** component of the **RubusD
 
 🔥 **Next step: Integration with the AI agent framework!** 🚀
 
+---
+
+## 📄 License
+This project is licensed under the MIT License.
+
+---
+
+## 📝 **Author**
+- 👤 0xRubusData 
+- 📧 Contact: 0xRubusData@gmail.com
+- 🌍 GitHub: https://github.com/0xrubusdata/rubus-vms
+
+## 🌐 Connect with Us
+- **Twitter (X)**: [0xRubusData](https://x.com/Data0x88850)
+- **Website**: [RubusLab](https://rubus-lab.vercel.app/)
+
+## 🎯 **Happy Coding!** 🚀
