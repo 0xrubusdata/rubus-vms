@@ -3,7 +3,11 @@
 
 ---
 
-# 📌 Vector Memory Service - AI-Powered Data Indexing
+# ![Rubus-VMS](./public/agents/Rubus-VMS.png)
+
+
+## 🌿 Welcome to **Rubus-VMS - Vector Memory Service - AI-Powered Data Indexing**
+
 
 ## 🏗️ Introduction
 The **Vector Memory Service** project is designed to create a **vector memory** from data collected by the **Rubus-Cron** system. This vector memory will serve as a **dynamic knowledge base** for specialized AI agents.
