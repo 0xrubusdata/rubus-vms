@@ -1,7 +1,9 @@
+"""
+Main entry point for the FastAPI application.
+"""
+
 from fastapi import FastAPI
+from app.api.endpoints import router
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Vector Memory Service is running"}
+app.include_router(router)
