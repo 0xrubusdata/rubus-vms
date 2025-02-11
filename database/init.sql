@@ -1,5 +1,8 @@
--- Create database (if not already created)
-CREATE DATABASE vms_data;
+-- Create database
+DROP TABLE IF EXISTS economic_memory CASCADE;
+DROP TABLE IF EXISTS hacker_memory CASCADE;
+DROP TABLE IF EXISTS poet_memory CASCADE;
+DROP TABLE IF EXISTS religious_philosophical_memory CASCADE;
 
 -- Connect to the database
 \c vms_data;

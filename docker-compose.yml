@@ -25,7 +25,7 @@ services:
       - vms_postgres
     environment:
       VMS_POSTGRES_URL: postgres://${VMS_POSTGRES_USER}:${VMS_POSTGRES_PASSWORD}@vms_postgres:${VMS_POSTGRES_PORT}/${VMS_POSTGRES_DB}
-      RUBUS_POSTGRES_URL: postgres://${RUBUS_POSTGRES_USER}:${RUBUS_POSTGRES_PASSWORD}@${RUBUS_POSTGRES_HOST}:${RUBUS_POSTGRES_PORT}/${RUBUS_POSTGRES_DB}
+      CRON_POSTGRES_URL: postgres://${CRON_POSTGRES_USER}:${CRON_POSTGRES_PASSWORD}@${CRON_POSTGRES_HOST}:${CRON_POSTGRES_PORT}/${CRON_POSTGRES_DB}
     ports:
       - "8001:8001"  # ⚠️ Change le port si nécessaire
     volumes:
@@ -41,7 +41,9 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: vms_postgres
     ports:
-      - "8081:8080"    
+      - "8081:8080"
+    networks:
+      - vms_network
 
   # 🟢 Optionnel : ChromaDB pour la base vectorielle
   chromadb:
