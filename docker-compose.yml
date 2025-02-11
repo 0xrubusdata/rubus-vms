@@ -12,6 +12,7 @@ services:
       - "5433:5432"  # ⚠️ Change le port externe si besoin
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - vms_network
 
