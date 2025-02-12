@@ -1,24 +1,22 @@
-
-# 📌 Servicio de Memoria Vectorial - Indexación de Datos Impulsada por IA
+## 🌿 Bienvenido a **Rubus-VMS - API y Servicio de Memoria Vectorial (Rubus-VMS)**
 
 ## 🏗️ Introducción
-El proyecto **Vector Memory Service** está diseñado para crear una **memoria vectorial** a partir de datos recopilados por el sistema **Rubus-Cron**. Esta memoria vectorial servirá como una **base de conocimiento dinámica** para agentes de IA especializados.
+El proyecto **Servicio de Memoria Vectorial** está diseñado para crear una **memoria vectorial** a partir de datos recogidos por el sistema **Rubus-Cron**. Esta memoria vectorial servirá como una **base de conocimiento dinámica** para agentes de IA especializados.
 
-🔹 **Stack Tecnológico:**
+🔹 **Tecnologías:**
 - **Lenguaje:** Python 🐍
 - **Base de Datos Vectorial:** FAISS / Weaviate / Pinecone / ChromaDB
 - **API Backend:** FastAPI ⚡
 - **Almacenamiento de Metadatos:** PostgreSQL 🏛️
-- **Pipeline de PLN:** spaCy / SentenceTransformers / LangChain
-- **Integración con Agentes de IA:** OpenAI API / LlamaIndex / RAG Personalizado (Generación Aumentada por Recuperación)
+- **Integración con Agentes de IA:** API de OpenAI / LlamaIndex / RAG Personalizado (Generación Aumentada por Recuperación)
 
 ---
 
 ## 🎯 Objetivos y Características
 
 1️⃣ **Ingesta y Preprocesamiento de Datos**
-   - Extracción desde **Rubus-Cron** 📡
-   - Limpieza y tokenización de texto
+   - Extracción de **Rubus-Cron** 📡
+   - Limpieza de texto y tokenización
    - Vectorización de datos (incrustación con BERT, SBERT, etc.)
 
 2️⃣ **Almacenamiento e Indexación**
@@ -32,55 +30,26 @@ El proyecto **Vector Memory Service** está diseñado para crear una **memoria v
 
 4️⃣ **Integración con Agentes de IA**
    - Conexión a modelos a través de **model-ai_microservice** 🎯
-   - Acceso a datos filtrados según necesidades específicas del agente (ej., **agente económico**) 🏦
-   
----
-
-## 🚀 Hoja de Ruta de Desarrollo
-
-1️⃣ **Fase 1 - MVP:**
-   - Desarrollo del **pipeline de ingesta y vectorización**
-   - Despliegue de una **base de datos vectorial**
-   - API para **almacenar y consultar embeddings**
-
-2️⃣ **Fase 2 - Mejoras:**
-   - Optimización de **búsqueda semántica** (Ajuste fino de modelos PLN)
-   - Implementación de **RAG avanzado**
-   - Integración con **otras fuentes de datos** (artículos económicos, publicaciones, etc.)
-
-3️⃣ **Fase 3 - Integración con Agentes de IA:**
-   - Conexión dinámica con el **marco de trabajo de agentes de IA**
-   - **Personalización del acceso** según la misión del agente
-   - Seguimiento y monitoreo del rendimiento 📈
+   - Acceso a datos filtrados según las necesidades específicas del agente (por ejemplo, **agente económico**) 🏦
 
 ---
 
-## ⚙️ Despliegue y Uso
-### **Instalación**
-```bash
-# Clonar el repositorio
+## ⚙️ **Instalación y Configuración**
+
+### **1️⃣ Clonar el repositorio**
+```sh
 git clone https://github.com/0xrubusdata/rubus-vms
 cd rubus-vms
+```
+### **2️⃣ Configurar variables de entorno**
+Crea un archivo .env en la raíz del proyecto:
+ - Definir fuente base (Rubus-PostgreSQL)
+ - Definir localización base (métadatos VMS-PostgreSQL)
+ - Definir API de Embedding (local o remota)
 
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Iniciar el servidor FastAPI
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-### **Ejemplo de Petición API**
-```bash
-curl -X POST "http://localhost:8000/search" \
-     -H "Content-Type: application/json" \
-     -d '{"query": "impacto de las subidas de tipos de interés"}'
+### **3️⃣ Ejecutar con Docker**
+```sh
+docker-compose up --build
 ```
 
 ---
-
-## 📌 Conclusión
-El proyecto **Vector Memory Service** es un componente **central** del ecosistema **RubusData**:
-- **Permite la organización, búsqueda y recuperación eficiente de datos indexados**.
-- **Proporciona una base sólida para agentes de IA capaces de acceder a memoria persistente y optimizada**.
-- **Su integración flexible permite la adaptación a varios tipos de misiones de IA**.
-
-🔥 **¡Siguiente paso: Integración con el marco de trabajo de agentes de IA!** 🚀

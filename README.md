@@ -6,7 +6,7 @@
 # ![Rubus-VMS](./public/agents/Rubus-VMS.png)
 
 
-## 🌿 Welcome to **Rubus-VMS - Vector Memory Service - AI-Powered Data Indexing**
+## 🌿 Welcome to **Rubus-VMS - API & Vector Memory Service (Rubus-VMS)**
 
 
 ## 🏗️ Introduction
@@ -17,7 +17,6 @@ The **Vector Memory Service** project is designed to create a **vector memory** 
 - **Vector Database:** FAISS / Weaviate / Pinecone / ChromaDB
 - **Backend API:** FastAPI ⚡
 - **Metadata Storage:** PostgreSQL 🏛️
-- **NLP Pipeline:** spaCy / SentenceTransformers / LangChain
 - **Integration with AI Agents:** OpenAI API / LlamaIndex / Custom RAG (Retrieval-Augmented Generation)
 
 ---
@@ -44,43 +43,41 @@ The **Vector Memory Service** project is designed to create a **vector memory** 
    
 ---
 
-## 🚀 Development Roadmap
+## ⚙️ **Installation & Setup**
 
-1️⃣ **Phase 1 - MVP:**
-   - Development of the **ingestion and vectorization pipeline**
-   - Deployment of a **vector database**
-   - API for **storing and querying embeddings**
+### **1️⃣ Clone the repository**
+```sh
+git clone https://github.com/0xrubusdata/rubus-vms
+cd rubus-vms
+```
+### **2️⃣ Configure environment variables**
+Create a .env file at the project root:
+ - Define Base source (Rubus-PostgreSQL)
+ - Define Base locale (VMS-PostgreSQL) métadata
+ - Define Embedding API (local or remote)
 
-2️⃣ **Phase 2 - Improvements:**
-   - Optimization of **semantic search** (Fine-tuning NLP models)
-   - Implementation of **advanced RAG**
-   - Integration with **other data sources** (economic articles, publications, etc.)
+### **3️⃣ Run with Docker**
+```sh
+docker-compose up --build
+```
+---
 
-3️⃣ **Phase 3 - Integration with AI Agents:**
-   - Dynamic connection with the **AI agent framework**
-   - **Customization of access** based on the agent's mission
-   - Performance tracking and monitoring 📈
+## 🧠 **Workflow of Rubus-VMS**
+### **📌 How data flows**
+
+- 1️⃣ Raw data is fetched from CRON-PostgreSQL using DataFetcher.fetch_data().
+- 2️⃣ Text is cleaned and preprocessed with DataTransformer.preprocess().
+- 3️⃣ The embedding is generated via DataTransformer.embed().
+- 4️⃣ The embedding is stored in FAISS/ChromaDB via VectorStore.add_vectors().
+- 5️⃣ The metadata is stored in VMS-PostgreSQL via MetadataStorage.store_metadata().
+- 6️⃣ A search request is made via /api/search to find relevant results.
 
 ---
 
-## ⚙️ Deployment & Usage
-### **Installation**
-```bash
-# Clone the repo
-git clone https://github.com/0xrubusdata/rubus-vms
-cd rubus-vms
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start the FastAPI server
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-### **Example API Request**
-```bash
-curl -X POST "http://localhost:8000/search" \
-     -H "Content-Type: application/json" \
-     -d '{"query": "impact of interest rate hikes"}'
+## 🚀 **Execution**
+### **📌 /api/search**
+```sh
+curl -X GET "http://localhost:8001/api/search?model=llama3.2&memory_type=economic&query=Latest economic trends&top_k=5"
 ```
 
 ---
