@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 8000
 
 # Ajout d'un message pour afficher que l'API est prête
-CMD ["sh", "-c", "echo '✅ Rubus-VMS is running on http://localhost:8001' && uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload"]
+CMD ["sh", "-c", "echo '✅ Rubus-VMS is running on http://localhost:8001' && uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload & python app/cron/scheduler.py"]
