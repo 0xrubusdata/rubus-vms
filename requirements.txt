@@ -17,3 +17,4 @@ chromadb==0.4.9          # Base vectorielle alternative (si ChromaDB est utilis�
 
 # 🔧 Outils complémentaires
 python-dotenv==1.0.0   # Chargement des variables d’environnement (.env)
+schedule==1.2.1        # Python job scheduling for humans.
